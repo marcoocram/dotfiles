@@ -29,5 +29,5 @@ alias code="cd $HOME/Desarrollo/www"
 alias dockerremove='docker rm -f $(docker ps -aq)'
 alias dockerremoveimg='docker rmi $(docker images -q)'
 alias dockerkill='docker kill $(docker ps -aq)'
-alias dcomposer='docker run -v `pwd`:/app composer/composer'
+alias dcomposer='docker run -v `pwd`:/app composer'
 alias dart="docker-compose exec app php artisan"
