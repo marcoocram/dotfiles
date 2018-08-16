@@ -1,9 +1,6 @@
 # UNIX COMMANDS
 alias upg="sudo apt update && sudo apt upgrade"
 
-# SOFTWARE
-alias sb="subl ."
-
 # GIT
 alias gs="git status"
 alias ga="git add"
@@ -23,11 +20,13 @@ mtf() {
 
 # Folders
 alias home="cd ~"
-alias code="cd $HOME/Desarrollo/www"
+alias code="cd $HOME/Desarrollo"
 
 # Docker
-alias dockerremove='docker rm -f $(docker ps -aq)'
+alias dockerremove='docker container rm -f $(docker ps -aq)'
 alias dockerremoveimg='docker rmi $(docker images -q)'
-alias dockerkill='docker kill $(docker ps -aq)'
+alias dockerkill='docker container kill $(docker ps -aq)'
 alias dcomposer='docker run -v `pwd`:/app composer'
 alias dart="docker-compose exec app php artisan"
+alias dce="docker-compose exec app"
+alias dup="docker-compose up -d"
