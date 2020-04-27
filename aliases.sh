@@ -20,13 +20,16 @@ mtf() {
 
 # Folders
 alias home="cd ~"
-alias code="cd $HOME/Desarrollo"
+alias code="cd $HOME/code"
 
 # Docker
 alias dockerremove='docker container rm -f $(docker ps -aq)'
-alias dockerremoveimg='docker rmi $(docker images -q)'
+alias dockerremoveimg='docker rmi -f $(docker images -q)'
 alias dockerkill='docker container kill $(docker ps -aq)'
+alias dockerdontrestart='docker container update --restart=no $(docker ps -aq)'
 alias dcomposer='docker run -v `pwd`:/app composer'
 alias dart="docker-compose exec app php artisan"
 alias dce="docker-compose exec app"
-alias dup="docker-compose up -d"
+alias dup="dockerkill | docker-compose up -d"
+
+alias dlive='function _dlive() { docker container run --rm --pid=host -v `pwd`:/var/www -p ${${1}:-8080}:${${1}:-8080} -e PORT=${${1}:-8080} letsgoi/live-server };_dlive'
