@@ -99,3 +99,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/dotfiles/.aliases
 source ~/.ssh_servers_aliases
+
+# Command line editor
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey '^e' edit-command-line
