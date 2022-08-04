@@ -34,3 +34,9 @@ alias dupapp="dockerkill | docker-compose up -d app"
 alias dce2e="docker-compose -f docker-compose.yml -f docker-compose-e2e.yml"
 
 alias dlive='function _dlive() { docker container run --rm --pid=host -v `pwd`:/var/www -p ${${1}:-8080}:${${1}:-8080} -e PORT=${${1}:-8080} letsgoi/live-server };_dlive'
+
+changelog() {
+    git log $(git describe --tags --abbrev=0)..HEAD --oneline | grep "into 'develop'" | cut -d "'" -f 2 | sed -Ee "s/-/ /g;s/feature/- New: /g;s/bugfix|hotfix/- Fix: /g" | awk -F / '{printf "%s", $1; for(i=2; i<=NF; i++) printf "%s", toupper(substr($i,1,1)) substr($i, 2); print"";}'
+}
+alias lights='yee --ip 192.168.1.36'
+alias speedtest='echo "$(curl -skLO https://git.io/speedtest.sh && chmod +x speedtest.sh && ./speedtest.sh)"'
