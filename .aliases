@@ -40,3 +40,6 @@ changelog() {
 }
 alias lights='yee --ip 192.168.1.36'
 alias speedtest='echo "$(curl -skLO https://git.io/speedtest.sh && chmod +x speedtest.sh && ./speedtest.sh)"'
+alias tree='function _tree() {
+    find . | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"
+};_tree'
